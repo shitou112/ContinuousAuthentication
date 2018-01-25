@@ -1,5 +1,7 @@
 package qsf.entity;
 
+import qsf.utils.Parameters;
+
 /**
  * @author Qian Shaofeng
  * created on 2018/1/3.
@@ -8,7 +10,7 @@ public class FeatureVector {
 
     public String uid;
 
-    public int numFeatures = 25;
+    public int numFeatures = Parameters.NUM_FEATURES;
 
     public double[] fv = new double[numFeatures];
 
@@ -50,6 +52,10 @@ public class FeatureVector {
 
     public double get(int i){
         return fv[i];
+    }
+
+    public void set(int i, double value){
+        fv[i] = value;
     }
 
     public String getUid(){

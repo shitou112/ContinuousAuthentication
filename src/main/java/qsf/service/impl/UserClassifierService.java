@@ -74,7 +74,7 @@ public class UserClassifierService implements IUserClassifierService {
                 int pos_num = posUserTouchs.size();
 
                 // 获取负样本（负样本是正样本的1.2倍，负样本取最新的和用户uid不同的样例）
-                int neg_num = (int) (pos_num * 2);
+                int neg_num = (int) (pos_num * 1.6);
                 List<UserTouch> negUserTouchs = userTouchService.getOtherUserTouchs(uid, neg_num);
                 posUserTouchs.addAll(negUserTouchs);
 

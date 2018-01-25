@@ -3,6 +3,7 @@ package qsf.machinelearning;
 import libsvm.*;
 import org.apache.log4j.Logger;
 import qsf.entity.FeatureVector;
+import qsf.utils.Standardization;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,6 +83,10 @@ public class SVMClassifier implements Classifier{
         }
 
         System.out.println("训练开始。。。。");
+        if (!Standardization.hasMinMaxArrays)
+            Standardization.generateMinMaxArrays(data);
+
+        data = Standardization.minMaxStandardize(data);
 
         int nums = data.length;
         logger.warn("hello: "+nums);
@@ -127,6 +132,7 @@ public class SVMClassifier implements Classifier{
         if (this.model == null )
             throw new IllegalArgumentException("Ivalid state of classifier");
 
+        featureVectors = Standardization.minMaxStandardize(featureVectors);
         System.out.println("预测开始。。。。");
         int[] results = new int[featureVectors.length];
 
