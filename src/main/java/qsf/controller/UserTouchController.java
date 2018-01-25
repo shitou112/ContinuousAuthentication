@@ -93,11 +93,11 @@ public class UserTouchController {
 //        for (UserTouch userTouch: userTouchs)
 //            userTouchService.insert(userTouch);
         System.out.println("result: "+result);
-        try {
-            Thread.sleep(5*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(1*1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         return new AsyncResult<>(result);
     }
